@@ -75,9 +75,16 @@ class EspressoMainActivityInstrumentationTests
         customDatesList.add(Date(1567569600000))
     }
 
+    fun pressOK() {
+        onView(withText("OK"))
+            .perform(click())
+    }
 
     @Test
     fun testShowDateDialog(){
+
+        pressOK()
+
         onView(withId(R.id.btn_pick_range))
             .perform(click())
 
@@ -86,6 +93,7 @@ class EspressoMainActivityInstrumentationTests
 
     @Test
     fun testSelectInvalidRange() {
+        pressOK()
         onView(withId(R.id.btn_pick_range))
             .perform(click())
 
@@ -130,7 +138,7 @@ class EspressoMainActivityInstrumentationTests
 
     @Test
     fun testAboutAppButton() {
-
+        pressOK()
         Intents.init()
         val expectedIntent = allOf(hasAction(Intent.ACTION_VIEW), hasData("https://play.google.com/store/apps/details?id=com.kennethfechter.calculendar"))
         intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
