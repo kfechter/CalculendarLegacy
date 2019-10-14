@@ -57,12 +57,6 @@ class CalculendarMain : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             }
 
             exclusionOptions.onItemSelectedListener = this
-
-            val extraString = intent.extras?.getString("action")
-
-            if(extraString != null && extraString == "newCalc") {
-                showRangeDialog()
-            }
         }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

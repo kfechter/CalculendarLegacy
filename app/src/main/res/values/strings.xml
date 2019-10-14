@@ -16,6 +16,13 @@
     <string name="shortcut_long_text">Open the app to the new calculation dialog</string>
     <string name="shortcut_short_text">New Calculation</string>
     <string name="build_id_formatter">Build Id: %s</string>
+
+    <string name="deprecation_dialog_text">
+        This application is no longer being supported. To continue
+        getting updates, download the new version from the play store
+        by searching for calculendar.
+    </string>
+
     <plurals name="custom_dates">
         <item quantity="one">Date</item>
         <item quantity="other">Dates</item>
