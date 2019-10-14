@@ -1,6 +1,7 @@
 package com.kennethfechter.datepicker
 
 import android.app.Instrumentation
+import android.content.Intent
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -9,6 +10,8 @@ import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
 import androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasClassName
 import androidx.test.espresso.intent.matcher.IntentMatchers
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import androidx.test.espresso.matcher.RootMatchers.isDialog
 import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
@@ -129,10 +132,10 @@ class EspressoMainActivityInstrumentationTests
     fun testAboutAppButton() {
 
         Intents.init()
-        //val expectedIntent = allOf(IntentMatchers.hasComponent(hasClassName(CalculendarAbout::class.java.name)))
-        //intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
+        val expectedIntent = allOf(hasAction(Intent.ACTION_VIEW), hasData("https://play.google.com/store/apps/details?id=com.kennethfechter.calculendar"))
+        intending(expectedIntent).respondWith(Instrumentation.ActivityResult(0, null))
         onView(withId(R.id.about_application)).perform(click())
-        //intended(expectedIntent)
+        intended(expectedIntent)
         Intents.release()
     }
 }

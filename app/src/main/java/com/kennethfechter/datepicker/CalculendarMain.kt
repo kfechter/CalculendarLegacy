@@ -123,12 +123,7 @@ class CalculendarMain : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     }
 
     private fun navigateToNewApp() {
-        try {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.kennethfechter.calculendar")))
-        }
-        catch (e: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.kennethfechter.calculendar")))
-        }
     }
 
     fun showRangeDialog() = uiScope.launch {
