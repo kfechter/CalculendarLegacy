@@ -1,7 +1,9 @@
 package com.kennethfechter.datepicker
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,7 +12,6 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.kennethfechter.datepicker.activities.CalculendarAbout
 import com.kennethfechter.datepicker.businesslogic.Utilities
 import kotlinx.android.synthetic.main.activity_calculendar_main.*
 import kotlinx.coroutines.*
@@ -56,6 +57,15 @@ class CalculendarMain : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 dialogBuilder.create().show()
             }
 
+            val deprecationDialogBuilder = AlertDialog.Builder(this)
+            deprecationDialogBuilder.setTitle("Deprecation Alert")
+            deprecationDialogBuilder.setMessage(R.string.deprecation_dialog_text)
+            deprecationDialogBuilder.setNeutralButton("OK") {dialog, _ ->
+                dialog.dismiss()
+            }
+            deprecationDialogBuilder.create().show()
+
+
             exclusionOptions.onItemSelectedListener = this
         }
 
@@ -66,7 +76,7 @@ class CalculendarMain : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.about_application -> navigateToAbout()
+            R.id.about_application -> navigateToNewApp()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -112,9 +122,13 @@ class CalculendarMain : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     }
 
-    private fun navigateToAbout() {
-        val aboutIntent = Intent(this, CalculendarAbout::class.java)
-        startActivity(aboutIntent)
+    private fun navigateToNewApp() {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.kennethfechter.calculendar")))
+        }
+        catch (e: ActivityNotFoundException) {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.kennethfechter.calculendar")))
+        }
     }
 
     fun showRangeDialog() = uiScope.launch {
