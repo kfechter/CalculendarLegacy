@@ -3,6 +3,6 @@
 <item
     android:id="@+id/about_application"
     android:title="@string/app_about_action_text"
-    android:icon="@drawable/ic_baseline_info_24px"
+    android:icon="@drawable/ic_announcement_24px"
     app:showAsAction="always"/>
 </menu>
