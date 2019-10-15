@@ -25,7 +25,6 @@ develop:
   only:
     refs:
       - develop
-    
   artifacts:
      paths:
        - app/build/outputs/apk/release/app-release.apk
