@@ -10,7 +10,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 29
         if(System.getenv("CI_PIPELINE_IID") != null) {
-            versionCode = (34686956 + System.getenv("CI_PIPELINE_IID").toInteger())
+            versionCode = (47 + System.getenv("CI_PIPELINE_IID").toInteger())
             versionName = new Date().format('yyyyMMdd') + "-" + System.getenv("CI_COMMIT_SHORT_SHA")
         } else {
             versionCode = 1
