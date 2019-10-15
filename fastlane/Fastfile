@@ -1,23 +1,20 @@
-fastlane_version "1.81.0"
+fastlane_version "2.133.0"
 
 default_platform :android
 
 platform :android do
 	desc "Submit a new Build to Google Alpha Channel"
 	lane :alpha do
-	      gradle(task: "assembleRelease")
 	      supply(track: "alpha", apk_paths: ["app/build/outputs/apk/release/app-release.apk"])
 	end
 
-	desc "Submit a new Build to Google Beta Channel"
+	desc "Promote Alpha Channel to Beta"
 	lane :beta do
-              gradle(task: "assembleRelease")
-	      supply(track: "beta", apk_paths: ["app/build/outputs/apk/release/app-release.apk"])
+	    supply(track: 'alpha', track_promote_to: 'beta', rollout: '1.0')
 	end
 
-	desc "Submit a new Build to Google Production Channel"
+	desc "Promote Beta Channel to Production"
 	lane :prod do
-              gradle(task: "assembleRelease")
-	      supply(apk_paths: ["app/build/outputs/apk/release/app-release.apk"])
+	      supply(track: 'beta', track_promote_to: 'production', rollout: '1.0')
 	end
 end
