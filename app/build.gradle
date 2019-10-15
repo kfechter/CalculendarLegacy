@@ -22,9 +22,9 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("kennethfechter.jks")
+            storeFile file("legacy-upload-keystore.jks")
             storePassword System.getenv("KEYSTORE_MASTER")
-            keyAlias "datecalculatorsignedkey"
+            keyAlias "legacy-signing-key"
             keyPassword System.getenv("RELEASE_SIGNING")
         }
     }

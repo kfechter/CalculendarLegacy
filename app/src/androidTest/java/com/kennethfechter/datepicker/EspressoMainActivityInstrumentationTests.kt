@@ -31,8 +31,8 @@ class EspressoMainActivityInstrumentationTests
     @get:Rule
     val activity = ActivityTestRule(CalculendarMain::class.java)
 
-    lateinit var selectedDatesList: MutableList<Date>
-    lateinit var customDatesList: MutableList<Date>
+    private lateinit var selectedDatesList: MutableList<Date>
+    private lateinit var customDatesList: MutableList<Date>
 
     @Before
     fun setup() {
