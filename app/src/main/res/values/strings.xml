@@ -20,7 +20,7 @@
     <string name="deprecation_dialog_text">
         This application is no longer being supported. To continue
         getting updates, download the new version from the play store
-        by tapping the ! button on the app bar.
+        by tapping the button on the app bar.
     </string>
 
     <plurals name="custom_dates">
