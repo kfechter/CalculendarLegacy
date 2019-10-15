@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Calculendar Legacy</string>
     <string name="title_activity_calculendar_about">Calculendar Legacy</string>
-    <string name="app_about_action_text">About</string>
+    <string name="app_about_action_text">New Version Available</string>
     <string name="version_header">Version %s</string>
     <string name="calculation_result_formatter">The interval from %1$s to %2$s with %3$d exclusions is %4$d %5$s</string>
     <string name="developer_name_header">Developers</string>
