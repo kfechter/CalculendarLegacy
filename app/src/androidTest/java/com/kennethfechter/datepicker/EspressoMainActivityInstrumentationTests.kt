@@ -8,12 +8,9 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.Intents.intended
 import androidx.test.espresso.intent.Intents.intending
-import androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasClassName
-import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasAction
 import androidx.test.espresso.intent.matcher.IntentMatchers.hasData
 import androidx.test.espresso.matcher.RootMatchers.isDialog
-import androidx.test.espresso.matcher.RootMatchers.withDecorView
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.kennethfechter.datepicker.businesslogic.Utilities
@@ -89,20 +86,6 @@ class EspressoMainActivityInstrumentationTests
             .perform(click())
 
         onView(withText("Select")).inRoot(isDialog()).check(matches(isDisplayed()))
-    }
-
-    @Test
-    fun testSelectInvalidRange() {
-        pressOK()
-        onView(withId(R.id.btn_pick_range))
-            .perform(click())
-
-        onView(withText("Select"))
-            .perform(click())
-
-        onView(withText("A valid date range was not selected"))
-            .inRoot(withDecorView(not(`is`(activity.activity.window.decorView))))
-            .check(matches(isDisplayed()))
     }
 
     @Test
