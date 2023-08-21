@@ -2,7 +2,6 @@ package com.kennethfechter.datepicker.businesslogic
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.pm.PackageManager
 import android.view.LayoutInflater
 import com.kennethfechter.datepicker.R
 import com.squareup.timessquare.CalendarPickerView
@@ -22,15 +21,6 @@ object Utilities {
         return SimpleDateFormat("EEEE MMM d, yyyy", Locale.getDefault()).format(selectedDate)
     }
 
-    fun getPackageVersionName(context: Context): String {
-        return try {
-            val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
-            packageInfo.versionName
-        } catch (e: PackageManager.NameNotFoundException) {
-            ""
-        }
-    }
-
     fun getCustomDatesFormatterString(context: Context, customDates: Int): String {
         val customDatePlural = context.resources.getQuantityString(R.plurals.custom_dates, customDates)
 
@@ -41,14 +31,14 @@ object Utilities {
 
         var calculatedDays: Int = selectedDates.size
 
-        var excludedDays: Int
+        val excludedDays: Int
 
         var saturdays = 0
         var sundays = 0
 
         val iterator = selectedDates.listIterator()
         for(item in iterator) {
-            var calendar = Calendar.getInstance()
+            val calendar = Calendar.getInstance()
             calendar.time = item
 
             if(calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY) {
